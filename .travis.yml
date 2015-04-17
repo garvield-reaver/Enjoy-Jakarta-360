@@ -9,7 +9,7 @@ before_install:
 - brew install caskroom/cask/brew-cask
 install:
 - brew cask install oclint
-- pod install --verbose
+- pod install
 script:
 - ./scripts/generate-report-and-build.sh
 #after_success:

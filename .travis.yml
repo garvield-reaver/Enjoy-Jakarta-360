@@ -1,0 +1,21 @@
+language: objective-c
+cache: cocoapods
+before_install:
+- sudo gem install cocoapods
+- brew update
+- brew outdated xctool || brew upgrade xctool
+- rm -rf /usr/local/bin/oclint*
+- rm -rf /usr/local/lib/oclint*
+- brew install caskroom/cask/brew-cask
+install:
+- brew cask install oclint
+- pod install --verbose
+before_script:
+- ./scripts/add-keys.sh
+script:
+- ./scripts/generate-report-and-build.sh
+#after_success:
+#- ./scripts/signin-and-upload.sh
+after_script:
+- ./scripts/remove-keys.sh
+- cat report.txt
